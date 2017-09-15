@@ -216,9 +216,10 @@ function webSocketConnect() {
                     for (var song in obj.data) {
                         var minutes = Math.floor(obj.data[song].duration / 60);
                         var seconds = obj.data[song].duration - minutes * 60;
-
+						/* Added Artist to Queue View - MMW */
                         $('#salamisandwich > tbody').append(
                             "<tr trackid=\"" + obj.data[song].id + "\"><td>" + (obj.data[song].pos + 1) + "</td>" +
+							    "<td>"+ obj.data[song].artist +"</td>" +
                                 "<td>"+ obj.data[song].title +"</td>" + 
                                 "<td>"+ minutes + ":" + (seconds < 10 ? '0' : '') + seconds +
                         "</td><td></td></tr>");
@@ -288,10 +289,11 @@ function webSocketConnect() {
                             case "song":
                                 var minutes = Math.floor(obj.data[item].duration / 60);
                                 var seconds = obj.data[item].duration - minutes * 60;
-
+                                /* Added Artist to Browse View - MMW */
                                 $('#salamisandwich > tbody').append(
                                     "<tr uri=\"" + encodeURI(obj.data[item].uri) + "\" class=\"song\">" +
                                     "<td><span class=\"glyphicon glyphicon-music\"></span></td>" +
+    							    "<td>"+ obj.data[song].artist +"</td>" +
                                     "<td>" + obj.data[item].title +"</td>" +
                                     "<td>"+ minutes + ":" + (seconds < 10 ? '0' : '') + seconds +
                                     "</td><td></td></tr>"
